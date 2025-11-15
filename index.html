@@ -138,23 +138,83 @@
         <div id="gallery" class="grid grid-cols-12 gap-6">
             <!-- 範例作品 1：情侶寫真 - 佔 50% 寬度，向下跨越兩行 (lg:col-span-6 lg:row-span-2) -->
             <div class="photo-card rounded-lg overflow-hidden shadow-xl col-span-12 lg:col-span-6 lg:row-span-2" data-category="couple">
-                <!-- 效能優化：新增 loading="lazy" 延遲載入，並加入 width/height 屬性消除 CLS -->
-                <img src="https://i.ibb.co/Wvv6F4FP/IMG-0407-1.jpg" alt="情侶寫真作品1" class="object-cover transform hover:scale-[1.03] duration-500" loading="lazy" width="600" height="1200">
+                <!-- 【已恢復：暫時禁用佔位符以確保顯示】 -->
+                <img 
+                    src="https://i.ibb.co/Wvv6F4FP/IMG-0407-1.jpg" 
+                    alt="情侶寫真作品1" 
+                    class="object-cover transform hover:scale-[1.03] duration-500" 
+                    loading="lazy" 
+                    width="600" 
+                    height="1200"
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    srcset="
+                        https://i.ibb.co/Wvv6F4FP/IMG-0407-1.jpg 600w, 
+                        https://i.ibb.co/Wvv6F4FP/IMG-0407-1.jpg 1200w, 
+                        https://i.ibb.co/Wvv6F4FP/IMG-0407-1.jpg 1800w
+                    "
+                >
+                <!-- 
+                【速度優化結構保留 - 待替換】
+                請將您的縮圖網址替換掉下方 placehold.co 的網址：
+                srcset="
+                    https://placehold.co/600x1200/0F9D58/ffffff?text=請替換成小圖(600w)+-+IMG-0407 600w, 
+                    https://placehold.co/1200x2400/4285F4/ffffff?text=請替換成中圖(1200w)+-+IMG-0407 1200w, 
+                    https://i.ibb.co/Wvv6F4FP/IMG-0407-1.jpg 1800w 
+                "
+                -->
             </div>
             
              <!-- 範例作品 4：情侶寫真 - 佔 50% 寬度 (右上方圖) -->
             <div class="photo-card rounded-lg overflow-hidden shadow-xl col-span-12 lg:col-span-6" data-category="couple">
-                <!-- 效能優化：新增 loading="lazy" 延遲載入，並加入 width/height 屬性消除 CLS -->
-                <img src="https://i.ibb.co/TC3Rc2w/DSC08683-1.jpg" alt="情侶寫真作品4" class="object-cover transform hover:scale-[1.03] duration-500" loading="lazy" width="600" height="600">
+                <!-- 【已恢復：暫時禁用佔位符以確保顯示】 -->
+                <img 
+                    src="https://i.ibb.co/TC3Rc2w/DSC08683-1.jpg" 
+                    alt="情侶寫真作品4" 
+                    class="object-cover transform hover:scale-[1.03] duration-500" 
+                    loading="lazy" 
+                    width="600" 
+                    height="600"
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    srcset="
+                        https://i.ibb.co/TC3Rc2w/DSC08683-1.jpg 600w, 
+                        https://i.ibb.co/TC3Rc2w/DSC08683-1.jpg 1200w
+                    "
+                >
+                <!-- 
+                【速度優化結構保留 - 待替換】
+                請將您的縮圖網址替換掉下方 placehold.co 的網址：
+                srcset="
+                    https://placehold.co/600x600/0F9D58/ffffff?text=請替換成小圖(600w)+-+DSC08683-1 600w, 
+                    https://i.ibb.co/TC3Rc2w/DSC08683-1.jpg 1200w
+                "
+                -->
             </div>
             
             <!-- 新增作品：情侶寫真 (右下方圖) - 佔 50% 寬度 (lg:col-span-6) -->
             <div class="photo-card rounded-lg overflow-hidden shadow-xl col-span-12 lg:col-span-6" data-category="couple">
-                <!-- 效能優化：新增 loading="lazy" 延遲載入，並加入 width/height 屬性消除 CLS -->
-                <img src="https://i.ibb.co/8nKYvypY/DSC08683-2.jpg" alt="情侶寫真新作品" class="object-cover transform hover:scale-[1.03] duration-500" loading="lazy" width="600" height="600">
+                <!-- 【已恢復：暫時禁用佔位符以確保顯示】 -->
+                <img 
+                    src="https://i.ibb.co/8nKYvypY/DSC08683-2.jpg" 
+                    alt="情侶寫真新作品" 
+                    class="object-cover transform hover:scale-[1.03] duration-500" 
+                    loading="lazy" 
+                    width="600" 
+                    height="600"
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    srcset="
+                        https://i.ibb.co/8nKYvypY/DSC08683-2.jpg 600w, 
+                        https://i.ibb.co/8nKYvypY/DSC08683-2.jpg 1200w
+                    "
+                >
+                <!-- 
+                【速度優化結構保留 - 待替換】
+                請將您的縮圖網址替換掉下方 placehold.co 的網址：
+                srcset="
+                    https://placehold.co/600x600/0F9D58/ffffff?text=請替換成小圖(600w)+-+DSC08683-2 600w, 
+                    https://i.ibb.co/8nKYvypY/DSC08683-2.jpg 1200w
+                "
+                -->
             </div>
-
-            <!-- 以下是後續的原始範例作品，已加入效能屬性 -->
 
             <!-- 範例作品 2：街頭隨拍 - 佔 33.3% 寬度 (lg:col-span-4) -->
             <div class="photo-card rounded-lg overflow-hidden shadow-xl col-span-12 lg:col-span-4" data-category="street">
@@ -163,7 +223,28 @@
 
             <!-- 範例作品 3：個人肖像 - 佔 33.3% 寬度 (lg:col-span-4) -->
             <div class="photo-card rounded-lg overflow-hidden shadow-xl col-span-12 lg:col-span-4" data-category="portrait">
-                <img src="https://placehold.co/1000x1000/A8A888/ffffff?text=個人肖像+-+法式優雅" alt="法式優雅單人肖像" class="object-cover transform hover:scale-[1.03] duration-500" loading="lazy" width="400" height="400">
+                <!-- 【已恢復：暫時禁用佔位符以確保顯示】 -->
+                <img 
+                    src="https://i.ibb.co/B5xqK73p/IMG-1060.jpg" 
+                    alt="法式優雅單人肖像" 
+                    class="object-cover transform hover:scale-[1.03] duration-500" 
+                    loading="lazy" 
+                    width="400" 
+                    height="400"
+                    sizes="(min-width: 1024px) 33vw, 100vw"
+                    srcset="
+                        https://i.ibb.co/B5xqK73p/IMG-1060.jpg 400w, 
+                        https://i.ibb.co/B5xqK73p/IMG-1060.jpg 800w
+                    "
+                >
+                 <!-- 
+                【速度優化結構保留 - 待替換】
+                請將您的縮圖網址替換掉下方 placehold.co 的網址：
+                srcset="
+                    https://placehold.co/400x400/0F9D58/ffffff?text=請替換成小圖(400w)+-+IMG-1060 400w, 
+                    https://i.ibb.co/B5xqK73p/IMG-1060.jpg 800w
+                "
+                -->
             </div>
 
             <!-- 範例作品 5：街頭隨拍 - 佔 25% 寬度 (lg:col-span-3) -->

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>巴黎光影旅拍 - 單頁式作品集</title>
+    <!-- 載入 Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <style>
@@ -21,7 +22,9 @@
         }
         .photo-card img {
             width: 100%;
-            height: auto;
+            /* 為了 row-span-2 效果，確保圖片填滿容器高度 */
+            height: 100%; 
+            object-fit: cover; /* 確保圖片不變形地覆蓋整個卡片 */
         }
         /* 圖片分類導覽列樣式：簡潔線條風格 */
         .filter-button {
@@ -48,14 +51,17 @@
 </head>
 <body class="selection:bg-pink-100 selection:text-pink-900">
 
+    <!-- *** 固定頂部導覽列 (Fixed Navigation Bar) *** -->
     <nav class="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
+                <!-- 標誌或品牌名稱 -->
                 <div class="flex items-center">
                     <a href="#home" class="text-xl font-bold text-gray-900 tracking-wider">
                         PARIS PHOTO
                     </a>
                 </div>
+                <!-- 導覽連結 -->
                 <div class="flex items-center space-x-6">
                     <a href="#home" class="text-gray-600 hover:text-pink-500 font-medium transition duration-150">Home</a>
                     <a href="#about" class="text-gray-600 hover:text-pink-500 font-medium transition duration-150">About</a>
@@ -66,8 +72,11 @@
         </div>
     </nav>
 
+    <!-- *** SECTION 1: 封面頁 (Home) *** -->
     <section id="home" class="hero-section flex items-center justify-center relative text-white">
-        <img src="https://placehold.co/1920x1080/4B5563/ffffff?text=Full+Screen+Paris+Hero+Image" alt="巴黎塞納河畔背景圖" class="absolute inset-0 w-full h-full object-cover opacity-60">
+        <!-- 圖片佔位符號，模擬全螢幕背景圖 -->
+        <!-- 【高效能重點】Hero 圖片是 LCP 元素，必須嚴格壓縮（建議低於 500KB）且不使用 lazy 載入 -->
+        <img src="https://placehold.co/1920x1080/4B5563/ffffff?text=Full+Screen+Paris+Hero+Image" alt="巴黎塞納河畔背景圖" class="absolute inset-0 w-full h-full object-cover opacity-60" width="1920" height="1080">
 
         <div class="text-center relative z-10 p-4">
             <h1 class="text-7xl sm:text-8xl font-thin tracking-widest mb-6">
@@ -82,6 +91,7 @@
         </div>
     </section>
 
+    <!-- *** SECTION 2: 關於攝影師 (About Me) *** -->
     <section id="about" class="py-24 px-4 sm:px-12 max-w-5xl mx-auto">
         <h2 class="text-4xl font-light text-gray-900 mb-10 border-b-2 border-pink-500 inline-block pb-2">
             關於攝影師 (The Photographer)
@@ -102,11 +112,13 @@
         </div>
     </section>
 
+    <!-- *** SECTION 3: 作品集 (Portfolio) - 結合篩選與網格 *** -->
     <section id="portfolio" class="py-24 px-4 sm:px-12 max-w-6xl mx-auto">
         <h2 class="text-4xl font-light text-gray-900 mb-10 text-center">
             精選作品集 (Featured Portfolio)
         </h2>
 
+        <!-- 分類篩選導覽列 (保留原功能) -->
         <nav class="flex flex-wrap justify-center gap-6 border-b border-gray-200 mb-16">
             <button class="filter-button active text-gray-500 hover:text-gray-900 focus:outline-none" data-filter="all" onclick="filterGallery('all', this)">
                 所有作品 (All)
@@ -122,47 +134,63 @@
             </button>
         </nav>
 
+        <!-- 作品圖庫網格區塊 -->
         <div id="gallery" class="grid grid-cols-12 gap-6">
+            <!-- 範例作品 1：情侶寫真 - 佔 50% 寬度，向下跨越兩行 (lg:col-span-6 lg:row-span-2) -->
             <div class="photo-card rounded-lg overflow-hidden shadow-xl col-span-12 lg:col-span-6 lg:row-span-2" data-category="couple">
-                <img src="https://i.ibb.co/Wvv6F4FP/IMG-0407-1.jpg">
+                <!-- 效能優化：新增 loading="lazy" 延遲載入，並加入 width/height 屬性消除 CLS -->
+                <img src="https://i.ibb.co/Wvv6F4FP/IMG-0407-1.jpg" alt="情侶寫真作品1" class="object-cover transform hover:scale-[1.03] duration-500" loading="lazy" width="600" height="1200">
             </div>
             
-             <div class="photo-card rounded-lg overflow-hidden shadow-xl col-span-12 lg:col-span-6" data-category="couple">
-                <img src="https://i.ibb.co/TC3Rc2w/DSC08683-1.jpg">
-            </div>
-            
+             <!-- 範例作品 4：情侶寫真 - 佔 50% 寬度 (右上方圖) -->
             <div class="photo-card rounded-lg overflow-hidden shadow-xl col-span-12 lg:col-span-6" data-category="couple">
-                <img src="https://i.ibb.co/8nKYvypY/DSC08683-2.jpg">
-            </div>
-
-            <div class="photo-card rounded-lg overflow-hidden shadow-xl col-span-12 lg:col-span-4" data-category="street">
-                <img src="https://placehold.co/1000x1200/94A3B8/ffffff?text=街頭隨拍+-+蒙馬特" alt="蒙馬特小巷的街拍作品" class="object-cover transform hover:scale-[1.03] duration-500" loading="lazy">
-            </div>
-
-            <div class="photo-card rounded-lg overflow-hidden shadow-xl col-span-12 lg:col-span-4" data-category="portrait">
-                <img src="https://placehold.co/1000x1000/A8A888/ffffff?text=個人肖像+-+法式優雅" alt="法式優雅單人肖像" class="object-cover transform hover:scale-[1.03] duration-500" loading="lazy">
-            </div>
-
-            <div class="photo-card rounded-lg overflow-hidden shadow-xl col-span-12 lg:col-span-3" data-category="street">
-                <img src="https://placehold.co/1000x800/526788/ffffff?text=街頭隨拍+-+左岸咖啡" alt="咖啡館前的抓拍" class="object-cover transform hover:scale-[1.03] duration-500" loading="lazy">
+                <!-- 效能優化：新增 loading="lazy" 延遲載入，並加入 width/height 屬性消除 CLS -->
+                <img src="https://i.ibb.co/TC3Rc2w/DSC08683-1.jpg" alt="情侶寫真作品4" class="object-cover transform hover:scale-[1.03] duration-500" loading="lazy" width="600" height="600">
             </div>
             
+            <!-- 新增作品：情侶寫真 (右下方圖) - 佔 50% 寬度 (lg:col-span-6) -->
+            <div class="photo-card rounded-lg overflow-hidden shadow-xl col-span-12 lg:col-span-6" data-category="couple">
+                <!-- 效能優化：新增 loading="lazy" 延遲載入，並加入 width/height 屬性消除 CLS -->
+                <img src="https://i.ibb.co/8nKYvypY/DSC08683-2.jpg" alt="情侶寫真新作品" class="object-cover transform hover:scale-[1.03] duration-500" loading="lazy" width="600" height="600">
+            </div>
+
+            <!-- 以下是後續的原始範例作品，已加入效能屬性 -->
+
+            <!-- 範例作品 2：街頭隨拍 - 佔 33.3% 寬度 (lg:col-span-4) -->
+            <div class="photo-card rounded-lg overflow-hidden shadow-xl col-span-12 lg:col-span-4" data-category="street">
+                <img src="https://placehold.co/1000x1200/94A3B8/ffffff?text=街頭隨拍+-+蒙馬特" alt="蒙馬特小巷的街拍作品" class="object-cover transform hover:scale-[1.03] duration-500" loading="lazy" width="400" height="480">
+            </div>
+
+            <!-- 範例作品 3：個人肖像 - 佔 33.3% 寬度 (lg:col-span-4) -->
+            <div class="photo-card rounded-lg overflow-hidden shadow-xl col-span-12 lg:col-span-4" data-category="portrait">
+                <img src="https://placehold.co/1000x1000/A8A888/ffffff?text=個人肖像+-+法式優雅" alt="法式優雅單人肖像" class="object-cover transform hover:scale-[1.03] duration-500" loading="lazy" width="400" height="400">
+            </div>
+
+            <!-- 範例作品 5：街頭隨拍 - 佔 25% 寬度 (lg:col-span-3) -->
+            <div class="photo-card rounded-lg overflow-hidden shadow-xl col-span-12 lg:col-span-3" data-category="street">
+                <img src="https://placehold.co/1000x800/526788/ffffff?text=街頭隨拍+-+左岸咖啡" alt="咖啡館前的抓拍" class="object-cover transform hover:scale-[1.03] duration-500" loading="lazy" width="300" height="240">
+            </div>
+            
+            <!-- 範例作品 6：個人肖像 - 佔 75% 寬度 (lg:col-span-9) -->
             <div class="photo-card rounded-lg overflow-hidden shadow-xl col-span-12 lg:col-span-9" data-category="portrait">
-                <img src="https://placehold.co/1000x700/758A99/ffffff?text=個人肖像+-+羅浮宮" alt="羅浮宮外的氛圍照" class="object-cover transform hover:scale-[1.03] duration-500" loading="lazy">
+                <img src="https://placehold.co/1000x700/758A99/ffffff?text=個人肖像+-+羅浮宮" alt="羅浮宮外的氛圍照" class="object-cover transform hover:scale-[1.03] duration-500" loading="lazy" width="900" height="630">
             </div>
             
         </div>
     </section>
 
+    <!-- *** SECTION 4: 服務與聯絡區塊 (Contact) *** -->
     <section id="contact" class="text-center py-24 bg-pink-50 rounded-t-3xl shadow-inner max-w-full mx-auto">
         <h2 class="text-4xl font-light text-gray-800 mb-4">預約您的巴黎旅拍服務</h2>
         <p class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto font-light">
             我們提供客製化方案。請透過以下方式聯繫我們，索取完整服務手冊。
         </p>
         <div class="space-y-4 sm:space-y-0 sm:space-x-8 sm:flex justify-center">
+            <!-- 聯絡按鈕 1: IG -->
             <a href="https://www.instagram.com/YourIGHandle" target="_blank" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full shadow-lg text-white bg-pink-500 hover:bg-pink-600 transition duration-300 transform hover:scale-105">
                 📸 IG 查詢與預約 (@YourIGHandle)
             </a>
+            <!-- 聯絡按鈕 2: Email -->
             <a href="mailto:your_email@example.com" class="inline-flex items-center justify-center px-8 py-3 border border-pink-500 text-base font-medium rounded-full text-pink-500 bg-white hover:bg-pink-50 transition duration-300 transform hover:scale-105">
                 📧 Email 聯絡
             </a>
@@ -170,6 +198,7 @@
     </section>
 
 
+    <!-- JavaScript 實現圖片篩選功能 (維持不變) -->
     <script>
         function filterGallery(category, button) {
             const gallery = document.getElementById('gallery');
@@ -212,10 +241,3 @@
 
 </body>
 </html>
-```eof
-
-如果您要將這些佔位圖替換成您的實際照片，請記得：
-
-1.  **壓縮照片** (使用 TinyPNG 或 Squoosh)。
-2.  **上傳到圖床** (例如 ImgBB)，並取得 **直接連結 (Direct Link)**。
-3.  替換 `<img src="**這裡的網址**">` 內雙引號中的內容。
